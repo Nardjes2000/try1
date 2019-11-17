@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client2 extends Model
 {
+	//un autre comment
     // je vais essayer
 }
