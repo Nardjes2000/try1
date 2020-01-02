@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFiletimesTable extends Migration
+class CreateFailedJobsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateFiletimesTable extends Migration
      */
     public function up()
     {
-        Schema::create('filetimes', function (Blueprint $table) {
+        Schema::create('failed_jobs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('filename');
-            $table->string('filechemin');
-            $table->string('fileniveau');
-             $table->string('filegroupe');
-            $table->timestamps();
+            $table->text('connection');
+            $table->text('queue');
+            $table->longText('payload');
+            $table->longText('exception');
+            $table->timestamp('failed_at')->useCurrent();
         });
     }
 
@@ -30,6 +30,6 @@ class CreateFiletimesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('filetimes');
+        Schema::dropIfExists('failed_jobs');
     }
 }
